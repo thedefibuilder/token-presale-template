@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { ESocialNames } from "@/lib/dapp-config";
+import type { ESocialNames } from "@/dapp-config";
 
 import { Col, Row } from "@/components/grid";
 import DappBanner from "@/components/dapp/dapp-banner";
@@ -17,8 +17,6 @@ export default function DappTokenPage({
   projectName,
   socials,
 }: TDappTokenProps) {
-  const targetDate = new Date("2024-12-31T23:59:59");
-
   return (
     <div>
       <Row>
@@ -43,7 +41,7 @@ export default function DappTokenPage({
           <div className="h-6 md:h-8" />
         </Col>
         <Col lg={4} md={6}>
-          <DappCard targetDate={targetDate} />
+          <DappCard />
         </Col>
       </Row>
       <div className="h-10 sm:h-0" />

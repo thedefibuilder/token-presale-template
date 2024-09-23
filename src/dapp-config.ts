@@ -1,5 +1,8 @@
 import { baseSepolia } from "viem/chains";
 
+export const TOKEN_ADDRESS = "0x6a87976ced93132caea6965073c5593afa467b2c";
+export const PRESALE_ADDRESS = "0x7a53b98934535f975121c30574abfe645386cf5d";
+
 export const chain = baseSepolia;
 export const dappName = "Token Presale";
 export const WALLETCONNECT_PROJECT_ID = "f2f3d7ba6f87a167006e1cd6a57a76b1";

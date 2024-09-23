@@ -1,5 +1,5 @@
 import DappTokenPage from "@/components/dapp/dapp-token";
-import { COMPANY_DETAILS } from "@/lib/dapp-config";
+import { COMPANY_DETAILS } from "@/dapp-config";
 
 export default function Home() {
   return (

@@ -9,7 +9,7 @@ import {
   IconBrandX,
 } from "@tabler/icons-react";
 import Image from "next/image";
-import { ESocialNames } from "@/lib/dapp-config";
+import { ESocialNames } from "@/dapp-config";
 
 export type TDappHeaderProps = {
   projectName: string;
@@ -39,7 +39,6 @@ const isValidUrl = (key: string, url: string): boolean => {
 };
 
 export default function DappHeader({ projectName, socials }: TDappHeaderProps) {
-  console.log("SOCIALS", socials);
   return (
     <div className="flex items-center gap-3">
       <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black">
@@ -56,8 +55,6 @@ export default function DappHeader({ projectName, socials }: TDappHeaderProps) {
           {Object.keys(socials).map((key) => {
             const Icon = socialIcons[key as ESocialNames];
             const url = socials[key as ESocialNames];
-            console.log(url);
-            console.log(isValidUrl(key, url || ""));
             return (
               Icon &&
               url &&

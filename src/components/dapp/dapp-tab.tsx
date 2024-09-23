@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LAUNCHPAD_TABS_INFO, TOKENOMICS } from "@/lib/dapp-config";
+import { LAUNCHPAD_TABS_INFO, TOKENOMICS } from "@/dapp-config";
 
 export function TokenInfoTabs() {
   return (

@@ -4,13 +4,9 @@ import React, { useEffect, useState } from "react";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { TOKENOMICS } from "@/lib/dapp-config";
+import { TOKENOMICS } from "@/dapp-config";
 
 import DappWalletButton from "./dapp-wallet-button";
-
-type Props = {
-  targetDate: string | Date;
-};
 
 type TimeLeft = {
   days: number;
@@ -19,7 +15,9 @@ type TimeLeft = {
   seconds: number;
 };
 
-export default function DappCard({ targetDate }: Props) {
+export default function DappCard() {
+  const targetDate = new Date("2024-12-31T23:59:59");
+
   const calculateTimeLeft = () => {
     const difference = +new Date(targetDate) - Date.now();
 

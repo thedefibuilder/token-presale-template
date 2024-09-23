@@ -11,7 +11,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { ledgerWallet, trustWallet } from "@rainbow-me/rainbowkit/wallets";
 import { WagmiProvider as Web3WagmiProvider } from "wagmi";
-import { chain, dappName, WALLETCONNECT_PROJECT_ID } from "@/lib/dapp-config";
+import { chain, dappName, WALLETCONNECT_PROJECT_ID } from "@/dapp-config";
 import {
   QueryClientProvider as TansackQueryClientProvider,
   QueryClient,
