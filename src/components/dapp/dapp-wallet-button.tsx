@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 
-import type { TDappTokenProps } from "./dapp-token";
-
 import {
   useAccountModal,
   useChainModal,
@@ -13,7 +11,7 @@ import { useAccount } from "wagmi";
 
 import { Button } from "@/components/ui/button";
 
-export default function DappWalletButton({ colors }: TDappTokenProps) {
+export default function DappWalletButton() {
   const { isConnecting, isConnected, chain } = useAccount();
 
   const { openConnectModal } = useConnectModal();
@@ -30,9 +28,6 @@ export default function DappWalletButton({ colors }: TDappTokenProps) {
     return (
       <Button
         className="mb-4 w-full"
-        style={{
-          backgroundColor: colors?.primary,
-        }}
         onClick={() => {
           openConnectModal?.();
         }}
@@ -46,14 +41,7 @@ export default function DappWalletButton({ colors }: TDappTokenProps) {
 
   if (isConnected && !chain) {
     return (
-      <Button
-        className="w-full"
-        style={{
-          backgroundColor: colors?.primary,
-        }}
-        onClick={openChainModal}
-        type="button"
-      >
+      <Button className="w-full" onClick={openChainModal} type="button">
         Wrong network
       </Button>
     );
@@ -63,9 +51,6 @@ export default function DappWalletButton({ colors }: TDappTokenProps) {
     <div className="flex w-full max-w-5xl flex-col items-center justify-between">
       <Button
         className="mb-4 w-full"
-        style={{
-          background: colors?.primary,
-        }}
         onClick={() => openAccountModal?.()}
         type="button"
       >

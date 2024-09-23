@@ -13,21 +13,12 @@ export const COMPANY_DETAILS = {
   logoLargeLight: "https://i.imgur.com/8iWWaMQ.png",
   logoSmallDark: "https://i.imgur.com/ll9GMpP.png",
   logoLargeDark: "https://i.imgur.com/oONaE1m.png",
-};
-
-export const COLORS = {
-  primary: "#73EAFF",
-  primaryBackground: "hsla(189, 35%, 10%, 1)",
-  secondaryBackground: "hsla(0, 0%, 16%, 1)",
-  secondary: "#4DD3A0",
-  textPrimary: "#FFFFFF",
-  textSecondary: "#9CA3AFBF",
-  componentBackground: "#1A1A1A",
-  sectionBackground: "#131313",
-  pageColor: "#161616",
-  black: "#000000",
-  white: "#ffffff",
-  progress: "hsla(145, 97%, 63%, 1)",
+  socials: {
+    X: "https://twitter.com/cryptosphere",
+    Discord: "https://discord.com/cryptosphere",
+    Telegram: "https://t.me/cryptosphere",
+    Facebook: "https://facebook.com/cryptosphere",
+  },
 };
 
 export const TOKENOMICS = {
@@ -74,79 +65,9 @@ export const LAUNCHPAD_TABS_INFO = {
   team: "Cryptosphere is powered by a diverse team of experts in blockchain technology, finance, and software development. Our team is dedicated to building innovative solutions that address the challenges of the current financial system and drive the adoption of decentralized technologies.",
 };
 
-export type TThemeColors = {
-  primary: string;
-  secondary: string;
-  muted: string;
-  background: string;
-  foreground: string;
-};
-
-const dappColors: Record<EThemeNames, TThemeColors> = {
-  Twilight: {
-    primary: "hsl(268, 76%, 48%)",
-    secondary: "hsl(322, 86%, 55%)",
-    muted: "hsl(0, 0%, 44%)",
-    background: "hsl(0, 0%, 5%)",
-    foreground: "hsl(0, 0%, 86%)",
-  },
-  Neon: {
-    primary: "hsl(158, 79%, 48%)",
-    secondary: "hsl(158, 89%, 53%)",
-    muted: "hsl(158, 80%, 25%)",
-    background: "hsl(0, 0%, 5%)",
-    foreground: "hsl(0, 0%, 86%)",
-  },
-  Metallic: {
-    primary: "	hsl(208, 44%, 17%)",
-    secondary: "hsl(208, 32%, 49%)",
-    muted: "	hsl(203, 29%, 51%)",
-    background: "hsl(0, 0%, 5%)",
-    foreground: "hsl(0, 0%, 86%)",
-  },
-  Navy: {
-    primary: "hsl(220, 96%, 38%)",
-    secondary: "hsl(214, 96%, 38%)",
-    muted: "		hsl(225, 79%, 76%)",
-    background: "hsl(0, 0%, 5%)",
-    foreground: "hsl(0, 0%, 86%)",
-  },
-  Brass: {
-    primary: "hsl(11, 87%, 62%)",
-    secondary: "hsl(28, 42%, 57%)",
-    muted: "hsl(46, 57%, 88%)",
-    background: "hsl(0, 0%, 5%)",
-    foreground: "hsl(0, 0%, 86%)",
-  },
-};
-
-export function getDappColors(themeName: EThemeNames): TThemeColors {
-  switch (themeName) {
-    case EThemeNames.Twilight:
-      return dappColors.Twilight;
-    case EThemeNames.Neon:
-      return dappColors.Neon;
-    case EThemeNames.Metallic:
-      return dappColors.Metallic;
-    case EThemeNames.Navy:
-      return dappColors.Navy;
-    case EThemeNames.Brass:
-      return dappColors.Brass;
-    default:
-      return dappColors.Twilight;
-  }
-}
-
-export enum EThemeNames {
-  Twilight = "Twilight",
-  Neon = "Neon",
-  Metallic = "Metallic",
-  Navy = "Navy",
-  Brass = "Brass",
-}
-
 export enum ESocialNames {
   Facebook = "Facebook",
+  Telegram = "Telegram",
   X = "X",
   Discord = "Discord",
   Github = "Github",
