@@ -24,19 +24,6 @@ export const COMPANY_DETAILS = {
   },
 };
 
-export const TOKENOMICS = {
-  tokenName: "CTS",
-  tokenAddress: "0x552B0...d242E7",
-  totalSupply: "1,000,000,000 CTS",
-  tokensInIDO: "200,000,000 CTS",
-  tokenInitialPrice: "1 CTS = 0.5 $",
-  idoMethod: "SOFTCAP",
-  lockedInLiquidity: "40%",
-  burnedRaisedTKN: "30%",
-  teamVestingSchedule: "5 weeks",
-  raisingFees: "5%",
-};
-
 export const LAUNCHPAD_TABS_INFO = {
   aboutProject:
     "              Cryptosphere is a groundbreaking web3 project that\n" +

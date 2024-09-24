@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { TOKENOMICS } from "@/dapp-config";
 
-import DappWalletButton from "./dapp-wallet-button";
+import DappButton from "./dapp-button";
+import { Tokenomics } from "@/lib/types";
+import { useAccount } from "wagmi";
 
 type TimeLeft = {
   days: number;
@@ -15,8 +16,9 @@ type TimeLeft = {
   seconds: number;
 };
 
-export default function DappCard() {
-  const targetDate = new Date("2024-12-31T23:59:59");
+export default function DappCard(tokenomics: Tokenomics) {
+  const presaleStarted = new Date() >= tokenomics.startTime;
+  const targetDate = presaleStarted ? tokenomics.endTime : tokenomics.startTime;
 
   const calculateTimeLeft = () => {
     const difference = +new Date(targetDate) - Date.now();
@@ -34,7 +36,9 @@ export default function DappCard() {
   };
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
-  const progressPercentage = 70;
+  const progressPercentage =
+    (Number.parseFloat(tokenomics.totalRaised) * 100) /
+    Number.parseFloat(tokenomics.raiseTarget);
 
   useEffect(() => {
     setTimeLeft(calculateTimeLeft());
@@ -45,13 +49,16 @@ export default function DappCard() {
 
     return () => clearInterval(timer);
   }, [targetDate]);
+
   return (
     <Card className="w-full border border-border rounded-[16px]">
       <CardContent className="md:p-2 md:px-8  ">
         <div className="h-4" />
 
         <div className="mx-auto max-w-sm p-2 shadow-lg bg-muted lg:p-6 border border-border rounded-[16px]">
-          <h2 className="mb-4 text-xl font-extrabold">Starting In</h2>
+          <h2 className="mb-4 text-xl font-extrabold">
+            {presaleStarted ? "Ending In" : "Starting In"}
+          </h2>
           <div className="flex justify-between lg:space-x-4 md:gap-y-2 ">
             {timeLeft && Object.keys(timeLeft).length > 0 ? (
               <>
@@ -83,7 +90,7 @@ export default function DappCard() {
           <div className="mb-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xs">Progress</h2>
-              <span className="text-xs">{progressPercentage}%</span>
+              <span className="text-xs">{progressPercentage.toFixed(2)}%</span>
             </div>
           </div>
           <div className="mb-4">
@@ -91,24 +98,24 @@ export default function DappCard() {
           </div>
           <div className="flex justify-between">
             <span className="text-xs">0.00 USD</span>
-            <span className="text-xs">8000.00 USD</span>
+            <span className="text-xs">{tokenomics.raiseTarget} ETH</span>
           </div>
         </div>
 
-        <hr className="my-4 h-px bg-gray-300" />
+        <hr className="my-4 h-px" />
 
         <div>
           <div className="mb-2 flex justify-between">
             <h3 className="text-sm">My Contribution</h3>
-            <h3 className="text-sm font-semibold">0 {TOKENOMICS.tokenName}</h3>
+            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
           </div>
           <div className="mb-2 flex justify-between">
             <h3 className="text-sm">My Limit Contribution</h3>
-            <h3 className="text-sm font-semibold">0 {TOKENOMICS.tokenName}</h3>
+            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
           </div>
           <div className="mb-2 flex justify-between">
             <h3 className="text-sm">My Reserved Tokens</h3>
-            <h3 className="text-sm font-semibold">0 {TOKENOMICS.tokenName}</h3>
+            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
           </div>
           <div className="mb-2 flex justify-between">
             <h3 className="text-sm">Total Contributors</h3>
@@ -118,8 +125,8 @@ export default function DappCard() {
       </CardContent>
       <div className="h-5" />
 
-      <CardFooter className="md:pb-0">
-        <DappWalletButton />
+      <CardFooter className="pb-2">
+        <DappButton />
       </CardFooter>
     </Card>
   );

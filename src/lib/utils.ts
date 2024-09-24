@@ -23,9 +23,8 @@ export const publicClinet = createPublicClient({
  * @param timestamp - The UTC timestamp in seconds from the smart contract.
  * @returns The formatted date string.
  */
-export function formatTimestamp(timestamp: number): string {
-  // Convert timestamp from seconds to milliseconds (if necessary)
-  const date = new Date(timestamp * 1000); // Smart contract timestamp is usually in seconds
+export function formatTimestamp(date: Date): string {
+  // Smart contract timestamp is usually in seconds
   // Use Intl.DateTimeFormat to format the date in a nice way (customize locale as needed)
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -38,4 +37,8 @@ export function formatTimestamp(timestamp: number): string {
 
   // Format date for a specific locale
   return new Intl.DateTimeFormat("en-US", options).format(date);
+}
+
+export function calculatePrice(raiseTarget: bigint, offeringAmount: bigint) {
+  return (raiseTarget * 10n ** 18n) / offeringAmount;
 }

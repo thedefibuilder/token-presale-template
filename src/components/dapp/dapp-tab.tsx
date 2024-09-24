@@ -1,10 +1,11 @@
 import React from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LAUNCHPAD_TABS_INFO, TOKENOMICS } from "@/dapp-config";
+import { LAUNCHPAD_TABS_INFO } from "@/dapp-config";
 import DappTokenomics from "./dapp-tokenomics";
+import { Tokenomics } from "@/lib/types";
 
-export function TokenInfoTabs() {
+export function TokenInfoTabs(tokenomics: Tokenomics) {
   return (
     <Tabs
       defaultValue="about"
@@ -38,7 +39,7 @@ export function TokenInfoTabs() {
           ))}
         </TabsContent>
         <TabsContent className="mt-0 p-4 md:p-8" value="tokenomics">
-          <DappTokenomics />
+          <DappTokenomics {...tokenomics} />
         </TabsContent>
       </div>
     </Tabs>

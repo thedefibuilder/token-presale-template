@@ -5,6 +5,7 @@ import QueryClientProvider, {
   RainbowKitProvider,
   WagmiProvider,
 } from "@/providers/web3";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <RainbowKitProvider>{children}</RainbowKitProvider>
           </WagmiProvider>
         </QueryClientProvider>
+        <Toaster />
       </body>
     </html>
   );
