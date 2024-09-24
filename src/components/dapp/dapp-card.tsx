@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import DappButton from "./dapp-button";
 import { Tokenomics } from "@/lib/types";
 import { useAccount } from "wagmi";
-
+import DappUserDetail from "./dapp-user-details";
 type TimeLeft = {
   days: number;
   hours: number;
@@ -17,6 +17,7 @@ type TimeLeft = {
 };
 
 export default function DappCard(tokenomics: Tokenomics) {
+  const { address } = useAccount();
   const presaleStarted = new Date() >= tokenomics.startTime;
   const targetDate = presaleStarted ? tokenomics.endTime : tokenomics.startTime;
 
@@ -97,36 +98,22 @@ export default function DappCard(tokenomics: Tokenomics) {
             <Progress value={progressPercentage} className="h-4" />
           </div>
           <div className="flex justify-between">
-            <span className="text-xs">0.00 USD</span>
+            <span className="text-xs">{tokenomics.totalRaised} ETH</span>
             <span className="text-xs">{tokenomics.raiseTarget} ETH</span>
           </div>
         </div>
 
         <hr className="my-4 h-px" />
 
-        <div>
-          <div className="mb-2 flex justify-between">
-            <h3 className="text-sm">My Contribution</h3>
-            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
-          </div>
-          <div className="mb-2 flex justify-between">
-            <h3 className="text-sm">My Limit Contribution</h3>
-            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
-          </div>
-          <div className="mb-2 flex justify-between">
-            <h3 className="text-sm">My Reserved Tokens</h3>
-            <h3 className="text-sm font-semibold">0 {tokenomics.symbol}</h3>
-          </div>
-          <div className="mb-2 flex justify-between">
-            <h3 className="text-sm">Total Contributors</h3>
-            <h3 className="text-sm font-semibold">300 Participants</h3>
-          </div>
-        </div>
+        {address && (
+          <DappUserDetail tokenomics={tokenomics} address={address} />
+        )}
       </CardContent>
       <div className="h-5" />
 
-      <CardFooter className="pb-2">
+      <CardFooter>
         <DappButton />
+        <div className="h-4" />
       </CardFooter>
     </Card>
   );

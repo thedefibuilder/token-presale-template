@@ -1,7 +1,7 @@
 import { baseSepolia } from "viem/chains";
 
 export const TOKEN_ADDRESS = "0x6a87976ced93132caea6965073c5593afa467b2c";
-export const PRESALE_ADDRESS = "0x7a53b98934535f975121c30574abfe645386cf5d";
+export const PRESALE_ADDRESS = "0x7705281f9fe4c6a8dc50fa051890b6ac990b8653";
 
 export const chain = baseSepolia;
 export const dappName = "Token Presale";

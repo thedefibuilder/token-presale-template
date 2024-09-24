@@ -12,3 +12,8 @@ export type Tokenomics = {
   tokenPrice: string;
   totalRaised: string;
 };
+
+export type UserDetail = {
+  contribution: string;
+  reservedTokens: string;
+};
