@@ -1,4 +1,5 @@
 import DappTokenPage from "@/components/dapp/dapp-token";
+import { Random } from "@/components/randomize";
 import { COMPANY_DETAILS } from "@/dapp-config";
 
 export default function Home() {
@@ -8,6 +9,8 @@ export default function Home() {
         projectName={COMPANY_DETAILS.name}
         socials={COMPANY_DETAILS.socials}
       />
+
+      <Random />
     </main>
   );
 }

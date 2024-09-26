@@ -9,7 +9,7 @@ export function TokenInfoTabs(tokenomics: Tokenomics) {
   return (
     <Tabs
       defaultValue="about"
-      className="mb-0 w-full bg-none border border-border rounded-[16px]"
+      className="mb-0 w-full bg-background border border-border rounded-[16px]"
     >
       <TabsList className="relative z-30 h-12 w-full rounded-[16px]">
         {["about", "roadmap", "tokenomics"].map((tab, index) => (

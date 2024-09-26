@@ -16,6 +16,7 @@ import { TOKEN_ABI } from "@/lib/abi/token";
 import { calculatePrice, formatTimestamp, publicClinet } from "@/lib/utils";
 import { formatUnits, getContract } from "viem";
 import { Tokenomics } from "@/lib/types";
+import { StyleProvider } from "../customize/style-provider";
 
 export type TDappTokenProps = {
   projectName: string;
@@ -62,7 +63,7 @@ export default async function DappTokenPage({
   };
 
   return (
-    <div>
+    <StyleProvider>
       <Row>
         <Col>
           <DappHeader projectName={projectName} socials={socials} />
@@ -89,6 +90,6 @@ export default async function DappTokenPage({
         </Col>
       </Row>
       <div className="h-10 sm:h-0" />
-    </div>
+    </StyleProvider>
   );
 }
